@@ -161,12 +161,12 @@ public class MediatorSendTests
     }
 
     [Fact]
-    public void Send_NullRequest_ThrowsArgumentNullException()
+    public async Task Send_NullRequest_ThrowsArgumentNullException()
     {
         var sp = new TestServiceProvider();
         var mediator = new CrashBytes.Mediator.Mediator(sp);
 
-        Assert.ThrowsAsync<ArgumentNullException>(() =>
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
             mediator.Send<string>(null!));
     }
 
